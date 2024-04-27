@@ -17,7 +17,13 @@ export const Itemlistcontainer = () => {
   useEffect(() => {
     const promesa = new Promise((resolve, reject) => {
       const productosFiltrados = idCategoria ? arrayProductos.filter((item) => item.categoria === idCategoria) : arrayProductos;
-      resolve(productosFiltrados);
+
+      if (productosFiltrados.length > 0){
+        resolve(productosFiltrados);
+        
+      }else {
+        reject("Error al filtrar producto")
+      }
     });
 
     promesa
